@@ -1,0 +1,99 @@
+create table MEMBER(
+CARD_NUM		INTEGER	NOT NULL	UNIQUE,
+ACCOUNT_NUM		INTEGER	NOT NULL	UNIQUE,
+NAME			VARCHAR	NOT NULL,
+STREET_ADDRESS	VARCHAR	NOT NULL,
+CITY			VARCHAR	NOT NULL,
+STATE			CHAR(2)	NOT NULL,
+ZIP_CODE		INTEGER(5)	NOT NULL,
+PAY_CARD_NUM	INTEGER	NOT NULL,
+PAY_CARD_CVV	INTEGER(3)	NOT NULL,
+PAY_CARD_EXP_DATE	INTEGER	NOT NULL,
+primary key (CARD_NUM),
+foreign key (ACCOUNT_NUM) references ACCOUNT);
+
+insert into MEMBER
+values ('123456', '123456', 'Ben Webb', '103 Todd st', 'Mattersville', 'CA', '90521', '1111222233334444', '112', '0524',);
+insert into MEMBER
+values ('111222', '222111', 'Scott Speed', '14258 8th st', 'Mattersville', 'CA', '90521', '0123012345674567', '336', '0725');
+insert into MEMBER
+values ('555132', '654987', 'Truth Nameson', '22 Long rd', 'Nowhere', 'CA', '90210', '1234589755556321', '457', '0227');
+insert into MEMBER
+values ('655897', '444857', 'Maggie Pie', '123 Yes ave', 'Nowhere', 'CA', '90210', '5555487965214568', '489', '1225');
+insert into MEMBER
+values ('587444', '254699', 'Briana Corgie', '56 10th st', 'Mattersville', 'CA', '90521', '6547888855551234', '496', '0224');
+
+
+
+create table ACCOUNT(
+ACCOUNT_NUM		INTEGER	NOT NULL	UNIQUE,
+invoice_num		INTEGER	UNIQUE,
+invoice_num		INTEGER	UNIQUE,
+invoice_num		INTEGER	UNIQUE,
+invoice_num		INTEGER	UNIQUE,
+invoice_num		INTEGER	UNIQUE,	
+primary key (ACCOUNT_NUM),
+foreign key (CATLOGUE_NUM) references MATERIAL);
+
+insert into ACCOUNT
+values ('123456', '00001111', NULL, NULL, NULL, NULL, '000222');
+insert into ACCOUNT
+values ('222111', '10000000', NULL, NULL, NULL, NULL, '000123');
+insert into ACCOUNT
+values ('654987', '00002222', NULL, NULL, NULL, NULL, '111222');
+insert into ACCOUNT
+values ('444857', '10004567', NULL, NULL, NULL, NULL, '105645'); 
+insert into ACCOUNT
+values ('254699', '00023450', NULL, NULL, NULL, NULL,);
+
+
+
+create table MATERIAL(
+CATALOGUE_NUM	INTEGER	NOT NULL	UNIQUE,
+TITLE			VARCHAR	NOT NULL,
+AUTHOR		VARCHAR	NOT NULL,
+PUBLISHER		VARCHAR,
+PUBLISH_DATE	DATE		NOT NULL,
+TYPE			CHAR(1)	NOT NULL,
+INVOICE_NUM		INTEGER,
+primary key (CATALOGUE_NUM);
+foreign key (INVOICE_NUM) references OVERDUE_MATERIAL on update cascade);
+
+insert into MATERIAL
+values ('00001111', 'Archimedes Revenge', 'Paul Hoffman', 'New York : Norton', '1-1-1988', 'b', '000222');
+insert into MATERIAL
+values ('10000000', 'Tales of Sadness', 'Angry Joe', 'Penguin House', '2-28-2001', 'b', '000123');
+insert into MATERIAL
+values ('00002222', 'Spudder Man: Falling down', 'Stanley E', 'Doinkus', '6-15-2017', 'c', '111222');
+insert into MATERIAL
+values ('10004567', 'Tom Hiddle', 'Marque Tang', 'Penguin House', '8-23-1997', 'b', '105645');
+insert into MATERIAL
+values ('00023450', 'Untitled 504', 'Duane Decker', 'Magazines Unlimited', '3-1-2023', 'm', '888566');
+
+
+
+create table MATERIAL_INVOICE(
+INVOICE_NUM		INTEGER	NOT NULL	UNIQUE,
+ACCOUNT_NUM		INTEGER	NOT NULL,
+CATALOGUE_NUM	INTEGER	NOT NULL	UNIQUE,
+CHECKOUT_DATE	DATE		NOT NULL,
+primary key (INVOICE_NUM), 
+foreign key (ACCOUNT_NUM) references ACCOUNT),
+foreign key (CATLOGUE_NUM) references MATERIAL);
+
+insert into MATERIAL_INVOICE
+values ('000222', '123456', '00001111', '2023-04-01');
+insert into MATERIAL_INVOICE
+values ('000123', '222111', '10000000', '2023-04-09');
+insert into MATERIAL_INVOICE
+values ('111222', '654987', '00002222', '2023-03-29');
+insert into MATERIAL_INVOICE
+values ('105645', '444857', '10004567', '2023-04-01');
+insert into MATERIAL_INVOICE
+values ('888566', '254699', '00023450', '2023-03-27');
+
+
+
+
+
+
