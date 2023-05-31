@@ -1,7 +1,7 @@
-/* Program name: M07 Programming project
+/* Program name: NBA sample
 *  Author: Ben Webb
 *  Date last updated: 5/8/23
-* Purpose: create a database for the NBA
+* Purpose: create a database for the NBA sample data
 */
 
 
