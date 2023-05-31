@@ -1,7 +1,7 @@
-/* Program name: M08 final Programming project
+/* Program name: console interface
 *  Author: Ben Webb
 *  Date last updated: 5/14/23
-* Purpose: create a database based on library disign laid out in previous modules
+* Purpose: create a database file for entered data
 */
 
 
